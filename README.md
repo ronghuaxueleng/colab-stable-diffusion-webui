@@ -2,7 +2,7 @@
 
 `stable-diffusion-webui`项目地址：[stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 
-使用google colab在线运行stable-diffusion-webui，可以通过上传models和extensions(尽量不要使用，在线下载很快)，至[网盘]( https://drive.google.com/drive/my-drive)实现快速快速使用，需要注意的是网盘空间大小要足够
+使用google colab在线运行[stable-diffusion-webui](https://colab.research.google.com/github/ronghuaxueleng/colab-stable-diffusion-webui/blob/main/stable_diffusion_webui_colab_zh.ipynb)，可以通过上传models和extensions(尽量不要使用，在线下载很快)，至[网盘]( https://drive.google.com/drive/my-drive)实现快速快速使用，需要注意的是网盘空间大小要足够
 
 可将stable-diffusion-webui生成的图片保存到网盘的outputs目录下，用于同步生成图片
 
