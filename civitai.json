@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Cute_girl_mix4",
+    "name": "cuteGirlMix4_v10.safetensors",
+    "type": "LORA",
+    "url": "https://civitai.com/api/download/models/16677"
+  },
+  {
+    "title": "国风3 GuoFeng3",
+    "name": "3Guofeng3_v33.safetensors",
+    "type": "Checkpoint",
+    "url": "https://civitai.com/api/download/models/36644"
+  },
+  {
+    "title": "RealDosMix",
+    "name": "realdosmix_.safetensors",
+    "type": "Checkpoint",
+    "url": "https://civitai.com/api/download/models/8137"
+  },
+  {
+    "title": "20D黑丝",
+    "name": "20d_v10.safetensors",
+    "type": "LORA",
+    "url": "https://civitai.com/api/download/models/17988"
+  }
+]
