@@ -2,6 +2,8 @@ import json
 
 import requests
 
+from diprompt.prompts import Prompt
+
 baseUrl = "https://api.diprompt.com/images?keyword=&page={}&size=50"
 headers = {
     'Connection': 'keep-alive',
@@ -18,20 +20,49 @@ headers = {
     'Accept-Language': 'zh-CN,zh;q=0.9'
 }
 
-images = list()
 
-
-def get_data(page=1):
+def get_data_from_diprompt(images, page=1):
+    if images is None:
+        images = list()
     url = baseUrl.format(page)
     response = requests.request("GET", url, headers=headers)
     data = json.loads(response.text)
     if len(data) > 0:
         images.extend(data)
         page = page + 1
-        get_data(page)
+        get_data_from_diprompt(images, page)
+
+
+def get_data_to_db(page=1):
+    url = baseUrl.format(page)
+    response = requests.request("GET", url, headers=headers)
+    data = json.loads(response.text)
+    try:
+        Prompt.insert(data).execute()
+    except Exception as e:
+        exit(1)
+
+    if len(data) > 0:
+        page = page + 1
+        get_data_to_db(page)
+
+
+def save_to_json_file():
+    images = list()
+    get_data_from_diprompt(images, 1)
+    with open('images.json', 'w', encoding='utf-8') as f:
+        json.dump(images, f, ensure_ascii=False)
+
+
+def read_images_to_db():
+    with open('images.json', 'r', encoding='utf-8') as f:
+        images = json.load(f)
+        for image in images:
+            try:
+                Prompt.insert(image).execute()
+            except Exception as e:
+                print(e)
 
 
 if __name__ == '__main__':
-    get_data()
-    with open('images.json', 'w', encoding='utf-8') as f:
-        json.dump(images, f, ensure_ascii=False)
+    get_data_to_db()
