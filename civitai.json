@@ -1,5 +1,11 @@
 [
   {
+    "title": "ChilloutMix",
+    "name": "chilloutmix_NiPrunedFp32Fix.safetensors",
+    "type": "Checkpoint",
+    "url": "https://civitai.com/api/download/models/7543"
+  },
+  {
     "title": "Cute_girl_mix4",
     "name": "cuteGirlMix4_v10.safetensors",
     "type": "LORA",
