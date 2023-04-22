@@ -24,6 +24,7 @@ class Prompt(Model):
     step = CharField()
     state = CharField()
     createdTime = DateTimeField()
+    grabState = IntegerField(default=0, null=False)# 抓取状态
     timestamp = DateTimeField(null=True, default=datetime.datetime.now)
 
     class Meta:

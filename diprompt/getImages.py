@@ -35,7 +35,7 @@ def get_data_from_diprompt(images, page=1):
 
 def get_data_to_db(page=1):
     url = baseUrl.format(page)
-    response = requests.request("GET", url, headers=headers)
+    response = requests.request("GET", url, headers=headers, timeout=10)
     data = json.loads(response.text)
     try:
         Prompt.insert(data).execute()
