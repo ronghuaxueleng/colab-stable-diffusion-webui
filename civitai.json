@@ -1,9 +1,15 @@
 [
   {
     "title": "ChilloutMix",
-    "name": "chilloutmix_NiPrunedFp32Fix.safetensors",
+    "name": "chilloutmix.safetensors",
     "type": "Checkpoint",
     "url": "https://civitai.com/api/download/models/7543"
+  },
+  {
+    "title": "Chilloutmix-Ni",
+    "name": "chilloutmix_Ni.safetensors",
+    "type": "Checkpoint",
+    "url": "https://civitai.com/api/download/models/8958"
   },
   {
     "title": "Cute_girl_mix4",
