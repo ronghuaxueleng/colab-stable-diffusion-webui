@@ -1,8 +1,10 @@
 import json
+import os
 
 import requests
-
 from diprompt.prompts import Prompt
+from multiprocessing import Pool, cpu_count
+import urllib.request, urllib.error, urllib.parse
 
 baseUrl = "https://api.diprompt.com/images?keyword=&page={}&size=50"
 headers = {
@@ -19,6 +21,39 @@ headers = {
     'Referer': 'https://www.diprompt.com/',
     'Accept-Language': 'zh-CN,zh;q=0.9'
 }
+
+
+def request_image(url, image_name):
+    print(("正在下载 %s" % image_name))
+    try:
+        os.makedirs("images", exist_ok=True)
+        req = urllib.request.Request(url)
+        req.add_header('User-Agent', headers['User-Agent'])
+        req.add_header('Cache-Control', 'no-cache')
+        req.add_header('Accept', '*/*')
+        req.add_header('Accept-Encoding', 'gzip, deflate')
+        req.add_header('Connection', 'Keep-Alive')
+
+        # if USE_PROXIES == 'true':
+        #     opener = urllib.request.build_opener(urllib.request.ProxyHandler(PROXIES))
+        #     urllib.request.install_opener(opener)
+
+        resp = urllib.request.urlopen(req)
+
+        respHtml = resp.read()
+        path = 'images/%s' % image_name
+
+        binfile = open(path, "wb")
+        binfile.write(respHtml)
+
+        binfile.close()
+        Prompt.update(grabState=1).where(Prompt.url == url).execute()
+        print(("%s 下载成功" % image_name))
+        return True
+    except Exception as e:
+        print(e)
+        print(("%s 下载失败" % image_name))
+        return False
 
 
 def get_data_from_diprompt(images, page=1):
@@ -64,5 +99,18 @@ def read_images_to_db():
                 print(e)
 
 
+def download_image():
+    images = Prompt.select().where(Prompt.grabState != 1).execute()
+    if len(images) > 0:
+        cpu_counts = cpu_count()
+        print("cup数量：{}".format(cpu_counts))
+        pool = Pool(processes=cpu_counts)
+        for img in images:
+            request_image(img.url, img.imageId + ".png")
+        pool.close()
+        pool.join()  # 运行完所有子进程才能顺序运行后续程序
+
+
 if __name__ == '__main__':
-    get_data_to_db()
+    # get_data_to_db()
+    download_image()
