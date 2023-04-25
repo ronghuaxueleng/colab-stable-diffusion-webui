@@ -68,16 +68,16 @@ def get_data_from_diprompt(images, page=1):
         get_data_from_diprompt(images, page)
 
 
-def get_data_to_db(page=1):
+def get_data_to_db(page=1, stop_page=5):
     url = baseUrl.format(page)
     response = requests.request("GET", url, headers=headers, timeout=10)
     data = json.loads(response.text)
     try:
         Prompt.insert(data).execute()
     except Exception as e:
-        exit(1)
+        pass
 
-    if len(data) > 0:
+    if len(data) > 0 and not page == stop_page:
         page = page + 1
         get_data_to_db(page)
 
@@ -112,5 +112,5 @@ def download_image():
 
 
 if __name__ == '__main__':
-    # get_data_to_db()
-    download_image()
+    get_data_to_db()
+    # download_image()
