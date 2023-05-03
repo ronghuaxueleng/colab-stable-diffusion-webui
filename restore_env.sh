@@ -7,4 +7,4 @@
 #source /usr/local/envs/stablediffusion/bin/activate
 #python --version
 
-tar -xzvf /content/drive/MyDrive/conda/site-packages.tar.gz -C /usr/local/lib/python3.10/site-packages
+tar -xzvf /content/drive/MyDrive/packages/1.5.tar.gz -C /usr/local/lib/python3.10/site-packages
