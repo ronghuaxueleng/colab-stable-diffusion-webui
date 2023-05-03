@@ -17,3 +17,4 @@ pip install -q torch==1.13.1+cu116 torchvision==0.14.1+cu116 torchaudio==0.13.1 
 pip install -q xformers==0.0.16 triton==2.0.0 -U --no-cache-dir
 rm -rf /content/drive/MyDrive/conda/site-packages.tar.gz
 tar -czf /content/drive/MyDrive/conda/site-packages.tar.gz /usr/local/lib/python3.10/site-packages
+ls -lh /content/drive/MyDrive/conda/site-packages.tar.gz
