@@ -10,7 +10,7 @@ db = SqliteDatabase('statistics.db')
 # 文章表
 class Models(Model):
     _id = PrimaryKeyField
-    id = CharField(unique=True)  # 模型id
+    id = CharField()  # 模型id
     name = CharField()  # 模型名称
     runCount = IntegerField(default=0, null=False)
     downloadCount = IntegerField(default=0, null=False)
