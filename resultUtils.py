@@ -16,6 +16,3 @@ with open("result.json", "r") as f:
             'downloadCount': downloadCount,
         })
         res[id] = one
-    with open("statistics_result.json", "w", encoding='utf-8') as f:
-        json.dump(res, f, ensure_ascii=False)
-    print(res)
