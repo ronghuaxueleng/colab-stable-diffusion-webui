@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>哩布模型统计</title>
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+</head>
+<body>
+
+<div id="311985" style="display: inline-block; width: 33%; height: 300px;"></div>
+
+<div id="780158" style="display: inline-block; width: 33%; height: 300px;"></div>
+
+<div id="791968" style="display: inline-block; width: 33%; height: 300px;"></div>
+
+<div id="792835" style="display: inline-block; width: 33%; height: 300px;"></div>
+
+<div id="819812" style="display: inline-block; width: 33%; height: 300px;"></div>
+
+<div id="819854" style="display: inline-block; width: 33%; height: 300px;"></div>
+
+<div id="819877" style="display: inline-block; width: 33%; height: 300px;"></div>
+
+<div id="833546" style="display: inline-block; width: 33%; height: 300px;"></div>
+
+<div id="866121" style="display: inline-block; width: 33%; height: 300px;"></div>
+
+<script>
+    $(
+        function () {
+            
+            var chart_311985 = echarts.init(document.getElementById('311985'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=311985",
+                dataType: 'json',
+                success: function (result) {
+                    chart_311985.setOption(result);
+                }
+            });
+            
+            var chart_780158 = echarts.init(document.getElementById('780158'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=780158",
+                dataType: 'json',
+                success: function (result) {
+                    chart_780158.setOption(result);
+                }
+            });
+            
+            var chart_791968 = echarts.init(document.getElementById('791968'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=791968",
+                dataType: 'json',
+                success: function (result) {
+                    chart_791968.setOption(result);
+                }
+            });
+            
+            var chart_792835 = echarts.init(document.getElementById('792835'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=792835",
+                dataType: 'json',
+                success: function (result) {
+                    chart_792835.setOption(result);
+                }
+            });
+            
+            var chart_819812 = echarts.init(document.getElementById('819812'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=819812",
+                dataType: 'json',
+                success: function (result) {
+                    chart_819812.setOption(result);
+                }
+            });
+            
+            var chart_819854 = echarts.init(document.getElementById('819854'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=819854",
+                dataType: 'json',
+                success: function (result) {
+                    chart_819854.setOption(result);
+                }
+            });
+            
+            var chart_819877 = echarts.init(document.getElementById('819877'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=819877",
+                dataType: 'json',
+                success: function (result) {
+                    chart_819877.setOption(result);
+                }
+            });
+            
+            var chart_833546 = echarts.init(document.getElementById('833546'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=833546",
+                dataType: 'json',
+                success: function (result) {
+                    chart_833546.setOption(result);
+                }
+            });
+            
+            var chart_866121 = echarts.init(document.getElementById('866121'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=866121",
+                dataType: 'json',
+                success: function (result) {
+                    chart_866121.setOption(result);
+                }
+            });
+            
+        }
+    )
+</script>
+</body>
+</html>

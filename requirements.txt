@@ -1,0 +1,6 @@
+pyecharts~=2.0.4
+peewee~=3.17.0
+flask
+flask-script
+requests~=2.28.2
+jinja2

@@ -1,5 +1,10 @@
+# -*- coding: utf-8 -*-
+import os
+
 import requests
 import json
+
+from jinja2 import Environment, PackageLoader
 
 from statistics import Models
 
@@ -34,7 +39,6 @@ headers = {
 response = requests.request("POST", url, headers=headers, data=payload)
 
 content = json.loads(response.text)
-res = dict()
 for data in content['data']['list']:
     model = {}
     model['id'] = data['id']
@@ -42,3 +46,19 @@ for data in content['data']['list']:
     model['runCount'] = data['runCount']
     model['downloadCount'] = data['downloadCount']
     Models.insert(model).execute()
+models = Models.select(Models.id, Models.name).group_by(Models.id).execute()
+env = Environment(loader=PackageLoader('resources', 'templates'))
+template_name = 'index.html'
+template = env.get_template(template_name)
+html = template.render(models=models)
+current_dir = os.getcwd()
+output_dir = os.path.join(current_dir, "./templates/")
+if not os.path.exists(output_dir):
+    os.mkdir(output_dir)
+os.chdir(output_dir)
+
+fo = open(template_name, "w", encoding='utf-8')
+fo.writelines(html)
+fo.close()
+os.chdir(current_dir)
+print(f"create {template_name}: finish")

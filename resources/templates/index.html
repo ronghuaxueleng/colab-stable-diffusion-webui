@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>哩布模型统计</title>
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+</head>
+<body>
+{% for model in models %}
+<div id="{{model.id}}" style="display: inline-block; width: 33%; height: 300px;"></div>
+{% endfor %}
+<script>
+    $(
+        function () {
+            {% for model in models %}
+            var chart_{{model.id}} = echarts.init(document.getElementById('{{model.id}}'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId={{model.id}}",
+                dataType: 'json',
+                success: function (result) {
+                    chart_{{model.id}}.setOption(result);
+                }
+            });
+            {% endfor %}
+        }
+    )
+</script>
+</body>
+</html>
