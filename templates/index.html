@@ -26,6 +26,10 @@
 
 <div id="866121" style="display: inline-block; width: 33%; height: 300px;"></div>
 
+<div id="895868" style="display: inline-block; width: 33%; height: 300px;"></div>
+
+<div id="897582" style="display: inline-block; width: 33%; height: 300px;"></div>
+
 <script>
     $(
         function () {
@@ -117,6 +121,26 @@
                 dataType: 'json',
                 success: function (result) {
                     chart_866121.setOption(result);
+                }
+            });
+            
+            var chart_895868 = echarts.init(document.getElementById('895868'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=895868",
+                dataType: 'json',
+                success: function (result) {
+                    chart_895868.setOption(result);
+                }
+            });
+            
+            var chart_897582 = echarts.init(document.getElementById('897582'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=897582",
+                dataType: 'json',
+                success: function (result) {
+                    chart_897582.setOption(result);
                 }
             });
             
