@@ -7,6 +7,9 @@
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
 </head>
 <body>
+<div class="tool-bar" style="line-height: 2;">
+    <a style="cursor: pointer">刷新</a>
+</div>
 {% for model in models %}
 <div id="{{model.id}}" style="display: inline-block; width: 33%; height: 300px;"></div>
 {% endfor %}
