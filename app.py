@@ -1,6 +1,3 @@
-import time
-from random import randrange
-
 from flask import Flask, render_template, request
 from pyecharts.charts import Bar
 
@@ -10,10 +7,10 @@ app = Flask(__name__, static_folder="templates")
 
 
 def bar_base(modelId) -> Bar:
-    models = Models.select().where(Models.id == modelId).order_by(Models.timestamp).execute()
+    models = Models.select().where(Models.id == modelId).order_by(Models.timestamp.desc()).limit(8).execute()
     xaxis = list()
     yaxis = list()
-    for model in models:
+    for model in reversed(models):
         y_title = model.name
         yaxis.append(model.runCount + model.downloadCount)
         xaxis.append(model.timestamp.strftime("%Y-%m-%d %H:%M:%S"))
