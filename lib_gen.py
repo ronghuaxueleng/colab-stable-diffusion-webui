@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+*/10 * * * * lib_gen.py
+"""
 import requests
 import json
 
