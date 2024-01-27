@@ -4,45 +4,51 @@ import datetime
 import requests
 import json
 
-url = "https://liblib-api.vibrou.com/gateway/sd-api/generate/image/history"
 
-payload = json.dumps({
-    "pageSize": 80,
-    "pageNo": 1,
-    "fromTime": datetime.datetime.now().strftime("%Y-%m-%d 00:00:00")
-})
-headers = {
-    'authority': 'liblib-api.vibrou.com',
-    'accept': 'application/json, text/plain, */*',
-    'accept-language': 'zh-CN,zh;q=0.9',
-    'content-type': 'application/json',
-    'dnt': '1',
-    'origin': 'https://www.liblib.art',
-    'referer': 'https://www.liblib.art/v4/editor',
-    'sec-ch-ua': '"Chromium";v="119", "Not?A_Brand";v="24"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"Windows"',
-    'sec-fetch-dest': 'empty',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'cross-site',
-    'token': 'd1894681b7c5438b9051b840431e9b59',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.6045.160 Safari/537.36'
-}
+def handle(token):
+    url = "https://liblib-api.vibrou.com/gateway/sd-api/generate/image/history"
 
-response = requests.request("POST", url, headers=headers, data=payload)
+    payload = json.dumps({
+        "pageSize": 80,
+        "pageNo": 1,
+        "fromTime": datetime.datetime.now().strftime("%Y-%m-%d 00:00:00")
+    })
+    headers = {
+        'authority': 'liblib-api.vibrou.com',
+        'accept': 'application/json, text/plain, */*',
+        'accept-language': 'zh-CN,zh;q=0.9',
+        'content-type': 'application/json',
+        'dnt': '1',
+        'origin': 'https://www.liblib.art',
+        'referer': 'https://www.liblib.art/v4/editor',
+        'sec-ch-ua': '"Chromium";v="119", "Not?A_Brand";v="24"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'cross-site',
+        'token': token,
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.6045.160 Safari/537.36'
+    }
 
-idList = []
-data = json.loads(response.text)
-for img in data['data']['list']:
-    idList.append(img['id'])
+    response = requests.request("POST", url, headers=headers, data=payload)
 
-url = "https://liblib-api.vibrou.com/gateway/sd-api/generate/image/delete"
+    idList = []
+    data = json.loads(response.text)
+    for img in data['data']['list']:
+        idList.append(img['id'])
 
-payload = json.dumps({
-    "idList": idList
-})
+    url = "https://liblib-api.vibrou.com/gateway/sd-api/generate/image/delete"
 
-response = requests.request("POST", url, headers=headers, data=payload)
+    payload = json.dumps({
+        "idList": idList
+    })
 
-print(response.text)
+    response = requests.request("POST", url, headers=headers, data=payload)
 
+    print(response.text)
+
+
+if __name__ == '__main__':
+    handle('d1894681b7c5438b9051b840431e9b59')
+    handle('3cc0cddb72874db49eb02f60d81fbf31')
