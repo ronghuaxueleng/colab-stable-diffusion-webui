@@ -180,3 +180,6 @@ def gen(token):
 if __name__ == '__main__':
     gen('d1894681b7c5438b9051b840431e9b59')
     gen('3cc0cddb72874db49eb02f60d81fbf31')
+    gen('5035e42609394bdfa3ddaee8b88a1b78')
+    gen('66149bee12304248beb571d1c0d9e553')
+    gen('5dfe53b85ed947a6a92586182768a84e')
