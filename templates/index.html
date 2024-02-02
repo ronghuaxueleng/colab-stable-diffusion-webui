@@ -35,6 +35,8 @@
 
 <div id="899281" style="display: inline-block; width: 33%; height: 300px;"></div>
 
+<div id="987167" style="display: inline-block; width: 33%; height: 300px;"></div>
+
 <script>
     $(
         function () {
@@ -156,6 +158,16 @@
                 dataType: 'json',
                 success: function (result) {
                     chart_899281.setOption(result);
+                }
+            });
+            
+            var chart_987167 = echarts.init(document.getElementById('987167'), 'white', {renderer: 'canvas'});
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/barChart?modelId=987167",
+                dataType: 'json',
+                success: function (result) {
+                    chart_987167.setOption(result);
                 }
             });
             
