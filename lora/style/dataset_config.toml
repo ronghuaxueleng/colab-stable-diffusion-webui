@@ -8,17 +8,7 @@ caption_dropout_every_n_epochs = 0
 flip_aug = false
 color_aug = false
 [[datasets.subsets]]
-image_dir = "/content/drive/MyDrive/wangxiaoting"
-class_tokens = "mksks"
-num_repeats = 20
-
-[[datasets.subsets]]
-image_dir = "/content/drive/MyDrive/wangxiaoting/50_photo_focus"
-class_tokens = "mksks"
-num_repeats = 20
-
-[[datasets.subsets]]
-image_dir = "/content/drive/MyDrive/wangxiaoting/50_photo_face"
+image_dir = "/content/drive/MyDrive/shiji/yuyang_tagged"
 class_tokens = "mksks"
 num_repeats = 20
 
