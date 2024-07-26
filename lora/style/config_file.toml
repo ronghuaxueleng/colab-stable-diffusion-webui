@@ -1,7 +1,7 @@
 [model_arguments]
 v2 = false
 v_parameterization = false
-pretrained_model_name_or_path = "/content/pretrained_model/chilloutmix_NiPrunedFp16Fix.safetensors"
+pretrained_model_name_or_path = "/content/pretrained_model/Stable-Diffusion-v1-5.safetensors"
 
 [additional_network_arguments]
 no_metadata = false
@@ -27,22 +27,22 @@ vae_batch_size = 4
 
 [training_arguments]
 output_dir = "/content/drive/MyDrive/LoRA/output"
-output_name = "wangxiaoting"
+output_name = "shiji"
 save_precision = "fp16"
 save_every_n_epochs = 1
 train_batch_size = 2
 max_token_length = 225
 mem_eff_attn = false
 xformers = true
-max_train_epochs = 10
+max_train_epochs = 20
 max_data_loader_n_workers = 8
 persistent_data_loader_workers = true
 gradient_checkpointing = false
 gradient_accumulation_steps = 1
 mixed_precision = "fp16"
 clip_skip = 1
-logging_dir = "/content/LoRA/logs"
-log_prefix = "wangxiaoting"
+logging_dir = "/content/drive/MyDrive/LoRA/logs"
+log_prefix = "shiji"
 lowram = true
 
 [sample_prompt_arguments]
